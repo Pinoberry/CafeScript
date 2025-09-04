@@ -1,4 +1,4 @@
-# CaféScript - E-commerce de Café
+# CafeScript - E-commerce de Café
 
 Bienvenido a CaféScript, una aplicación de comercio electrónico moderna para amantes del café, construida con React, TypeScript y Tailwind CSS.
 
@@ -32,7 +32,7 @@ Bienvenido a CaféScript, una aplicación de comercio electrónico moderna para 
    npm install
    ```
 
-## 🚦 Ejecución local
+## Ejecución local
 
 Para ejecutar el proyecto en modo desarrollo:
 
@@ -42,7 +42,7 @@ npm run dev
 
 Esto iniciará el servidor de desarrollo en [http://localhost:5173](http://localhost:5173).
 
-## 🏗️ Construcción para producción
+## Construcción para producción
 
 Para crear una versión optimizada para producción:
 
@@ -52,7 +52,7 @@ npm run build
 
 Los archivos estáticos se generarán en la carpeta dist/.
 
-## 🌐 Despliegue
+## Despliegue
 
 El proyecto está configurado para desplegarse en GitHub Pages. Para desplegar:
 
