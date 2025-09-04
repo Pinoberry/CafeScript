@@ -2,7 +2,7 @@
 
 Bienvenido a CaféScript, una aplicación de comercio electrónico moderna para amantes del café, construida con React, TypeScript y Tailwind CSS.
 
-## 🚀 Características
+## Características
 
 - Catálogo de productos de café
 - Carrito de compras interactivo
@@ -10,7 +10,7 @@ Bienvenido a CaféScript, una aplicación de comercio electrónico moderna para 
 - Navegación intuitiva
 - Procesamiento de pedidos
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - React 18
 - TypeScript
@@ -19,26 +19,26 @@ Bienvenido a CaféScript, una aplicación de comercio electrónico moderna para 
 - React Router
 - Lucide Icons
 
-## 📦 Instalación
+## Instalación
 
 1. Clona el repositorio:
-   `ash
+   ```ash
    git clone https://github.com/tu-usuario/cafescript.git
    cd CafeScript
-   `
+   ```
 
 2. Instala las dependencias:
-   `ash
+   ```ash
    npm install
-   `
+   ```
 
 ## 🚦 Ejecución local
 
 Para ejecutar el proyecto en modo desarrollo:
 
-`ash
+```ash
 npm run dev
-`
+```
 
 Esto iniciará el servidor de desarrollo en [http://localhost:5173](http://localhost:5173).
 
@@ -46,9 +46,9 @@ Esto iniciará el servidor de desarrollo en [http://localhost:5173](http://local
 
 Para crear una versión optimizada para producción:
 
-`ash
+```ash
 npm run build
-`
+```
 
 Los archivos estáticos se generarán en la carpeta dist/.
 
@@ -56,6 +56,6 @@ Los archivos estáticos se generarán en la carpeta dist/.
 
 El proyecto está configurado para desplegarse en GitHub Pages. Para desplegar:
 
-`ash
+```ash
 npm run deploy
-`
+```
