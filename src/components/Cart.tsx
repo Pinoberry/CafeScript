@@ -1,6 +1,6 @@
-import React from 'react';
-import { X, Minus, Plus, Trash2 } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import React from "react";
+import { X, Minus, Plus, Trash2 } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 interface CartProps {
   isOpen: boolean;
@@ -12,19 +12,19 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, onCheckout }) => {
   const { state, dispatch } = useCart();
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('es-CL', {
-      style: 'currency',
-      currency: 'CLP',
+    return new Intl.NumberFormat("es-CL", {
+      style: "currency",
+      currency: "CLP",
       minimumFractionDigits: 0,
     }).format(price);
   };
 
   const updateQuantity = (id: string, quantity: number) => {
-    dispatch({ type: 'UPDATE_QUANTITY', payload: { id, quantity } });
+    dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
   };
 
   const removeItem = (id: string) => {
-    dispatch({ type: 'REMOVE_ITEM', payload: id });
+    dispatch({ type: "REMOVE_ITEM", payload: id });
   };
 
   if (!isOpen) return null;
@@ -34,7 +34,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, onCheckout }) => {
       <div className="bg-cream-50 w-full max-w-md h-full overflow-y-auto">
         <div className="p-4 border-b border-coffee-200">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-bold text-coffee-900">Carrito de Compras</h2>
+            <h2 className="text-xl font-bold text-coffee-900">
+              Carrito de Compras
+            </h2>
             <button
               onClick={onClose}
               className="text-coffee-600 hover:text-coffee-800"
@@ -53,14 +55,17 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, onCheckout }) => {
             <>
               <div className="space-y-4 mb-6">
                 {state.items.map((item) => (
-                  <div key={item.id} className="bg-white rounded-lg p-4 shadow-sm">
+                  <div
+                    key={item.id}
+                    className="bg-white rounded-lg p-4 shadow-sm"
+                  >
                     <div className="flex items-start space-x-3">
                       <img
                         src={item.image}
                         alt={item.name}
                         className="w-16 h-16 object-cover rounded"
                       />
-                      
+
                       <div className="flex-1">
                         <h3 className="font-semibold text-coffee-900 text-sm">
                           {item.name}
@@ -82,18 +87,22 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, onCheckout }) => {
                     <div className="flex items-center justify-between mt-3">
                       <div className="flex items-center space-x-2">
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
                           className="bg-coffee-200 hover:bg-coffee-300 text-coffee-800 w-8 h-8 rounded flex items-center justify-center"
                         >
                           <Minus className="h-4 w-4" />
                         </button>
-                        
+
                         <span className="text-coffee-900 font-semibold w-8 text-center">
                           {item.quantity}
                         </span>
-                        
+
                         <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
                           className="bg-coffee-200 hover:bg-coffee-300 text-coffee-800 w-8 h-8 rounded flex items-center justify-center"
                         >
                           <Plus className="h-4 w-4" />
@@ -110,7 +119,9 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, onCheckout }) => {
 
               <div className="border-t border-coffee-200 pt-4">
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-lg font-bold text-coffee-900">Total:</span>
+                  <span className="text-lg font-bold text-coffee-900">
+                    Total:
+                  </span>
                   <span className="text-xl font-bold text-coffee-900">
                     {formatPrice(state.total)}
                   </span>

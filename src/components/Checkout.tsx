@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { X, ArrowLeft } from 'lucide-react';
-import { useCart } from '../context/CartContext';
-import type { Customer } from '../types';
+import React, { useState } from "react";
+import { X, ArrowLeft } from "lucide-react";
+import { useCart } from "../context/CartContext";
+import type { Customer } from "../types";
 
 interface CheckoutProps {
   isOpen: boolean;
@@ -12,25 +12,27 @@ interface CheckoutProps {
 const Checkout: React.FC<CheckoutProps> = ({ isOpen, onClose, onBack }) => {
   const { state, dispatch } = useCart();
   const [customer, setCustomer] = useState<Customer>({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    region: '',
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    region: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('es-CL', {
-      style: 'currency',
-      currency: 'CLP',
+    return new Intl.NumberFormat("es-CL", {
+      style: "currency",
+      currency: "CLP",
       minimumFractionDigits: 0,
     }).format(price);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setCustomer({
       ...customer,
       [e.target.name]: e.target.value,
@@ -41,23 +43,22 @@ const Checkout: React.FC<CheckoutProps> = ({ isOpen, onClose, onBack }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular procesamiento del pedido
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     setOrderComplete(true);
     setIsSubmitting(false);
-    dispatch({ type: 'CLEAR_CART' });
+    dispatch({ type: "CLEAR_CART" });
   };
 
   const handleNewOrder = () => {
     setOrderComplete(false);
     setCustomer({
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      city: '',
-      region: '',
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      city: "",
+      region: "",
     });
     onClose();
   };
@@ -77,7 +78,7 @@ const Checkout: React.FC<CheckoutProps> = ({ isOpen, onClose, onBack }) => {
                 <ArrowLeft className="h-6 w-6" />
               </button>
               <h2 className="text-xl font-bold text-coffee-900">
-                {orderComplete ? 'Pedido Confirmado' : 'Finalizar Compra'}
+                {orderComplete ? "Pedido Confirmado" : "Finalizar Compra"}
               </h2>
             </div>
             <button
@@ -94,22 +95,40 @@ const Checkout: React.FC<CheckoutProps> = ({ isOpen, onClose, onBack }) => {
             <div className="text-center">
               <div className="mb-6">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-coffee-900 mb-2">¡Pedido Confirmado!</h3>
+                <h3 className="text-2xl font-bold text-coffee-900 mb-2">
+                  ¡Pedido Confirmado!
+                </h3>
                 <p className="text-coffee-700">
-                  Gracias por tu compra. Recibirás un email de confirmación en breve.
+                  Gracias por tu compra. Recibirás un email de confirmación en
+                  breve.
                 </p>
               </div>
 
               <div className="bg-white rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-coffee-900 mb-2">Detalles del pedido:</h4>
+                <h4 className="font-semibold text-coffee-900 mb-2">
+                  Detalles del pedido:
+                </h4>
                 <p className="text-coffee-700 text-sm">
-                  <strong>Cliente:</strong> {customer.name}<br />
-                  <strong>Email:</strong> {customer.email}<br />
-                  <strong>Dirección:</strong> {customer.address}, {customer.city}
+                  <strong>Cliente:</strong> {customer.name}
+                  <br />
+                  <strong>Email:</strong> {customer.email}
+                  <br />
+                  <strong>Dirección:</strong> {customer.address},{" "}
+                  {customer.city}
                 </p>
               </div>
 
@@ -124,7 +143,9 @@ const Checkout: React.FC<CheckoutProps> = ({ isOpen, onClose, onBack }) => {
             <>
               {/* Resumen del pedido */}
               <div className="bg-white rounded-lg p-4 mb-6">
-                <h3 className="font-semibold text-coffee-900 mb-3">Resumen del Pedido</h3>
+                <h3 className="font-semibold text-coffee-900 mb-3">
+                  Resumen del Pedido
+                </h3>
                 <div className="space-y-2">
                   {state.items.map((item) => (
                     <div key={item.id} className="flex justify-between text-sm">
@@ -139,7 +160,9 @@ const Checkout: React.FC<CheckoutProps> = ({ isOpen, onClose, onBack }) => {
                   <div className="border-t border-coffee-200 pt-2 mt-2">
                     <div className="flex justify-between font-bold">
                       <span className="text-coffee-900">Total:</span>
-                      <span className="text-coffee-900">{formatPrice(state.total)}</span>
+                      <span className="text-coffee-900">
+                        {formatPrice(state.total)}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -245,7 +268,9 @@ const Checkout: React.FC<CheckoutProps> = ({ isOpen, onClose, onBack }) => {
                   disabled={isSubmitting}
                   className="w-full bg-coffee-700 hover:bg-coffee-600 disabled:bg-coffee-400 text-cream-50 py-3 rounded-lg font-semibold transition-colors"
                 >
-                  {isSubmitting ? 'Procesando...' : `Confirmar Pedido - ${formatPrice(state.total)}`}
+                  {isSubmitting
+                    ? "Procesando..."
+                    : `Confirmar Pedido - ${formatPrice(state.total)}`}
                 </button>
               </form>
             </>

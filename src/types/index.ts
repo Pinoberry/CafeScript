@@ -5,7 +5,7 @@ export interface Product {
   price: number;
   image: string;
   region: string;
-  roastLevel: 'Suave' | 'Medio' | 'Intenso';
+  roastLevel: "Suave" | "Medio" | "Intenso";
   weight: string;
 }
 

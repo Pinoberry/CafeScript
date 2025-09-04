@@ -1,34 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { Filter } from 'lucide-react';
-import ProductCard from './ProductCard';
-import { products, regions } from '../data/products';
+import React, { useState, useEffect } from "react";
+import { Filter } from "lucide-react";
+import ProductCard from "./ProductCard";
+import { products, regions } from "../data/products";
 
 const ProductCatalog: React.FC = () => {
-  // Efecto para el smooth scrolling
   useEffect(() => {
     const handleSmoothScroll = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+      if (
+        target.tagName === "A" &&
+        target.getAttribute("href")?.startsWith("#")
+      ) {
         e.preventDefault();
-        const targetId = target.getAttribute('href');
+        const targetId = target.getAttribute("href");
         const targetElement = document.querySelector(targetId as string);
         if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+          targetElement.scrollIntoView({ behavior: "smooth" });
         }
       }
     };
 
-    document.addEventListener('click', handleSmoothScroll);
+    document.addEventListener("click", handleSmoothScroll);
     return () => {
-      document.removeEventListener('click', handleSmoothScroll);
+      document.removeEventListener("click", handleSmoothScroll);
     };
   }, []);
-  const [selectedRegion, setSelectedRegion] = useState('Todas las Regiones');
+  const [selectedRegion, setSelectedRegion] = useState("Todas las Regiones");
   const [showFilters, setShowFilters] = useState(false);
 
-  const filteredProducts = selectedRegion === 'Todas las Regiones'
-    ? products
-    : products.filter(product => product.region === selectedRegion);
+  const filteredProducts =
+    selectedRegion === "Todas las Regiones"
+      ? products
+      : products.filter((product) => product.region === selectedRegion);
 
   return (
     <section id="productos" className="py-24 bg-cream-50">
@@ -38,7 +41,8 @@ const ProductCatalog: React.FC = () => {
             Nuestros Cafés Premium
           </h2>
           <p className="text-coffee-700 text-xl max-w-3xl mx-auto mb-12">
-            Cada región de Chile aporta características únicas a nuestros granos de café
+            Cada región de Chile aporta características únicas a nuestros granos
+            de café
           </p>
         </div>
 
@@ -53,7 +57,7 @@ const ProductCatalog: React.FC = () => {
               <span>Filtrar por Región</span>
             </button>
 
-            <div className={`${showFilters ? 'block' : 'hidden'} md:block`}>
+            <div className={`${showFilters ? "block" : "hidden"} md:block`}>
               <div className="flex flex-wrap gap-2">
                 {regions.map((region) => (
                   <button
@@ -61,8 +65,8 @@ const ProductCatalog: React.FC = () => {
                     onClick={() => setSelectedRegion(region)}
                     className={`px-4 py-2 rounded-lg transition-colors ${
                       selectedRegion === region
-                        ? 'bg-coffee-700 text-cream-50'
-                        : 'bg-coffee-200 text-coffee-800 hover:bg-coffee-300'
+                        ? "bg-coffee-700 text-cream-50"
+                        : "bg-coffee-200 text-coffee-800 hover:bg-coffee-300"
                     }`}
                   >
                     {region}

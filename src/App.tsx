@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { CartProvider } from './context/CartContext';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ProductCatalog from './components/ProductCatalog';
-import Cart from './components/Cart';
-import Checkout from './components/Checkout';
-import Footer from './components/Footer';
+import { useState } from "react";
+import { CartProvider } from "./context/CartContext";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import ProductCatalog from "./components/ProductCatalog";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
+import Footer from "./components/Footer";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -40,13 +40,13 @@ function App() {
         <Hero />
         <ProductCatalog />
         <Footer />
-        
+
         <Cart
           isOpen={isCartOpen}
           onClose={handleCartClose}
           onCheckout={handleCheckout}
         />
-        
+
         <Checkout
           isOpen={isCheckoutOpen}
           onClose={handleCheckoutClose}

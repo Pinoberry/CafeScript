@@ -1,6 +1,6 @@
-import React from 'react';
-import { ShoppingCart, Coffee } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import React from "react";
+import { ShoppingCart, Coffee } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 interface HeaderProps {
   onCartClick: () => void;
@@ -18,12 +18,32 @@ const Header: React.FC<HeaderProps> = ({ onCartClick }) => {
             <Coffee className="h-8 w-8 text-cream-200" />
             <h1 className="text-2xl font-bold font-serif">CafeScript</h1>
           </div>
-          
+
           <nav className="hidden md:flex space-x-6">
-            <a href="#inicio" className="hover:text-cream-200 transition-colors">Inicio</a>
-            <a href="#productos" className="hover:text-cream-200 transition-colors">Productos</a>
-            <a href="#nosotros" className="hover:text-cream-200 transition-colors">Nosotros</a>
-            <a href="#contacto" className="hover:text-cream-200 transition-colors">Contacto</a>
+            <a
+              href="#inicio"
+              className="hover:text-cream-200 transition-colors"
+            >
+              Inicio
+            </a>
+            <a
+              href="#productos"
+              className="hover:text-cream-200 transition-colors"
+            >
+              Productos
+            </a>
+            <a
+              href="#nosotros"
+              className="hover:text-cream-200 transition-colors"
+            >
+              Nosotros
+            </a>
+            <a
+              href="#contacto"
+              className="hover:text-cream-200 transition-colors"
+            >
+              Contacto
+            </a>
           </nav>
 
           <button
